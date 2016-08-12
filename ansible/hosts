@@ -1,3 +1,7 @@
+[hosts:children]
+ubuntu
+centos
+
 [ubuntu]
 ubuntu1604 ansible_host=10.255.255.10 ansible_python_interpreter=/usr/bin/python2.7
 ubuntu1404 ansible_host=10.255.255.11
