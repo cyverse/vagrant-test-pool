@@ -1,0 +1,9 @@
+[ubuntu]
+ubuntu1604 ansible_host=10.255.255.10 ansible_python_interpreter=/usr/bin/python2.7
+ubuntu1404 ansible_host=10.255.255.11
+ubuntu1204 ansible_host=10.255.255.12
+
+[centos]
+centos7 ansible_host=10.255.255.20
+centos6 ansible_host=10.255.255.21
+# centos5 ansible_host=10.255.255.22
