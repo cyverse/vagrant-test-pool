@@ -18,14 +18,12 @@ sudo adduser vagrant sudo
 SCRIPT
 
 $allow_ssh_password_auth_centos_7 = <<SCRIPT
-# sudo sed 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 sudo sed -i.bak '/ChallengeResponseAuthentication no/d' /etc/ssh/sshd_config
 echo "ChallengeResponseAuthentication yes" | sudo tee -a /etc/ssh/sshd_config
 sudo systemctl restart sshd
 SCRIPT
 
 $allow_ssh_password_auth_centos_6 = <<SCRIPT
-# sudo sed 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 sudo sed -i.bak '/ChallengeResponseAuthentication no/d' /etc/ssh/sshd_config
 echo "ChallengeResponseAuthentication yes" | sudo tee -a /etc/ssh/sshd_config
 sudo service sshd restart

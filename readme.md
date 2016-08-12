@@ -1,33 +1,34 @@
-Creates a group of VirtualBox VMs with the following operating systems:
+Creates a group of VirtualBox VMs as follows:
 
-- Ubuntu 16.04 LTS
-- Ubuntu 14.04 LTS
-- Ubuntu 12.04 LTS
-- CentOS 7
-- CentOS 6
+| OS               | VM Name    | Private IP Address |
+|------------------|------------|--------------------|
+| Ubuntu 16.04 LTS | ubuntu1604 | 10.255.255.10      |
+| Ubuntu 14.04 LTS | ubuntu1404 | 10.255.255.11      |
+| Ubuntu 12.04 LTS | ubuntu1204 | 10.255.255.12      |
+| CentOS 7         | centos7    | 10.255.255.20      |
+| CentOS 6         | centos6    | 10.255.255.21      |
 
-This is specifically intended for use with Ansible (and includes some Ansible boilerplate), but you can use it to test literally anything against the above versions of Ubuntu LTS and CentOS.
+This is intended for use with Ansible (and includes some Ansible boilerplate), but you can use it to test literally anything against the above operating systems.
 
 The Vagrantfile makes minimal configuration changes to support uniform SSH access to each VM and compatibility with Ansible. Specifically:
-- "vagrant" user with root privileges
-- Accept SSH password (ChallengeResponseAuthentication)
-- Installs Python 2.7 where needed (Ubuntu 16.04)
+- "vagrant" user with root privileges and password "vagrant"
+- Accept SSH password auth (ChallengeResponseAuthentication)
+- Installs Python 2.7 where needed
 
 (Very insecure! Don't expose to public networks and don't use for anything sensitive.)
 
-## VMs
-- ubuntu1604 at 10.255.255.10
-- ubuntu1404 at 10.255.255.11
-- ubuntu1204 at 10.255.255.12
-- centos7 at 10.255.255.20
-- centos6 at 10.255.255.21
-
 ## Requirements
-- Vagrant 1.8.4. Currently there is a [bug with Vagrant 1.8.5](https://github.com/mitchellh/vagrant/issues/7610) which prevents provisioning for the CentOS 7 VM. This will be fixed in Vagrant 1.8.6.
+- Vagrant. Currently there is a [bug with Vagrant 1.8.5](https://github.com/mitchellh/vagrant/issues/7610) which breaks provisioning for the CentOS 7 VM. This will be fixed in Vagrant 1.8.6; in the meantime use 1.8.4.
 - VirtualBox
 
 ## How to Use
-Clone the repo, `cd` to it, run `vagrant up`, and wait about 8 minutes.
+Clone the repo, `cd` to it, run `vagrant up`, and wait about 8 minutes for the provisioning script to complete. You may see "stdin: is not a tty" errors during Ubuntu provisioning; this is [safe to ignore](http://foo-o-rama.com/vagrant--stdin-is-not-a-tty--fix.html).
+
+You can connect to a VM via vagrant ssh or regular ssh to its private IP address:
+
+`vagrant ssh centos7`
+`ssh root@10.255.255.20`
+
 
 ### Ansible Usage Example
 ```
@@ -63,3 +64,4 @@ If you don't disable host key checking, you may have to add each VM's host key t
 - Disable host key checking in the boilerplate Ansible code - already done?
 - Grant vagrant user root access on ubuntu1404, and/or resolve root vs sudoer across all VMs
 - Add CentOS 5
+- http://foo-o-rama.com/vagrant--stdin-is-not-a-tty--fix.html
