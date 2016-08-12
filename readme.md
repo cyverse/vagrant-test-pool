@@ -24,10 +24,7 @@ The Vagrantfile makes minimal configuration changes to support uniform SSH acces
 ## How to Use
 Clone the repo, `cd` to it, run `vagrant up`, and wait about 8 minutes for the provisioning script to complete. You may see "stdin: is not a tty" errors during Ubuntu provisioning; this is [safe to ignore](http://foo-o-rama.com/vagrant--stdin-is-not-a-tty--fix.html).
 
-You can connect to a VM via vagrant ssh or regular ssh to its private IP address:
-
-`vagrant ssh centos7`
-`ssh root@10.255.255.20`
+You can connect to a VM via vagrant ssh (`vagrant ssh centos7`), or regular SSH to its private IP address (`ssh root@10.255.255.20`).
 
 
 ### Ansible Usage Example
