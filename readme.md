@@ -55,8 +55,6 @@ centos6 | SUCCESS => {
 }
 ```
 
-If you don't disable host key checking, you may have to add each VM's host key to your known_hosts file by manually SSHing into each VM each time it is provisioned (e.g. `ssh vagrant@10.255.255.10`).
-
 ### SSH Host Key Checking
 After destroying and re-provisioning the pool, the VMs will have different host keys than the ones you previously accepted into your known_hosts file; this breaks SSH and Ansible. Run clean_known_hosts.sh to fix this quickly.
 
