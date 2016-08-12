@@ -21,7 +21,6 @@ The Vagrantfile makes minimal configuration changes to support uniform SSH acces
 - ubuntu1204 at 10.255.255.12
 - centos7 at 10.255.255.20
 - centos6 at 10.255.255.21
-- centos5 at 10.255.255.22
 
 ## Requirements
 - Vagrant 1.8.4. Currently there is a [bug with Vagrant 1.8.5](https://github.com/mitchellh/vagrant/issues/7610) which prevents provisioning for the CentOS 7 VM. This will be fixed in Vagrant 1.8.6.
