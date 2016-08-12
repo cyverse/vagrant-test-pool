@@ -24,6 +24,7 @@ The Vagrantfile makes minimal configuration changes to support uniform SSH acces
 
 ## Requirements
 - Vagrant 1.8.4. Currently there is a [bug with Vagrant 1.8.5](https://github.com/mitchellh/vagrant/issues/7610) which prevents provisioning for the CentOS 7 VM. This will be fixed in Vagrant 1.8.6.
+- VirtualBox
 
 ## How to Use
 Clone the repo, `cd` to it, run `vagrant up`, and wait about 8 minutes.
