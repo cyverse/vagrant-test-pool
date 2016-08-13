@@ -31,7 +31,7 @@ You can connect to a VM via vagrant ssh (`vagrant ssh centos7`), or regular SSH 
 ```
 cd ansible
 export ANSIBLE_CONFIG=ansible.cfg
-$ ansible all -i hosts -m ping
+$ ansible all -i hosts -u root -m ping
 
 centos7 | SUCCESS => {
     "changed": false,
