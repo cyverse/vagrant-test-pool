@@ -26,6 +26,8 @@ Clone the repo, `cd` to it, run `vagrant up`, and wait about 8 minutes for the p
 
 You can connect to a VM via vagrant ssh (`vagrant ssh centos7`), or regular SSH to its private IP address (`ssh vagrant@10.255.255.20`).
 
+### Snapshot and Restore
+Rather than destroying and re-creating your pool between test runs, it's much faster to restore a snapshot of an earlier state. Immediately after provisioning, create a snapshot with `vagrant snapshot save initial`. Later, you can revert to the initial state with `vagrant snapshot restore initial --no-provision`.
 
 ### Ansible Usage Example
 ```
