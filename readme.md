@@ -7,6 +7,7 @@ Creates a group of VirtualBox VMs as follows:
 | Ubuntu 12.04 LTS | ubuntu1204 | 10.255.255.12      |
 | CentOS 7         | centos7    | 10.255.255.20      |
 | CentOS 6         | centos6    | 10.255.255.21      |
+| CentOS 5         | centos5    | 10.255.255.22      |
 
 This is intended for use with Ansible (and includes some Ansible boilerplate), but you can use it to test literally anything against the above operating systems.
 
@@ -31,14 +32,10 @@ Rather than destroying and re-creating your pool between test runs, it's much fa
 
 ### Ansible Usage Example
 ```
-cd ansible
-export ANSIBLE_CONFIG=ansible.cfg
+$ cd ansible
+$ export ANSIBLE_CONFIG=ansible.cfg
 $ ansible all -i hosts -u root -m ping
 
-centos7 | SUCCESS => {
-    "changed": false,
-    "ping": "pong"
-}
 ubuntu1604 | SUCCESS => {
     "changed": false,
     "ping": "pong"
@@ -51,7 +48,15 @@ ubuntu1204 | SUCCESS => {
     "changed": false,
     "ping": "pong"
 }
+centos7 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
 centos6 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+centos5 | SUCCESS => {
     "changed": false,
     "ping": "pong"
 }
@@ -61,7 +66,9 @@ centos6 | SUCCESS => {
 After destroying and re-provisioning the pool, the VMs will have different host keys than the ones you previously accepted into your known_hosts file; this breaks SSH and Ansible. Run clean_known_hosts.sh to fix this quickly for all VMs.
 
 ## Todo
-- Disable host key checking in the boilerplate Ansible code - already done?
 - Grant vagrant user root access on ubuntu1404, and/or resolve root vs sudoer across all VMs
-- Add CentOS 5
 - http://foo-o-rama.com/vagrant--stdin-is-not-a-tty--fix.html
+
+## Tada
+- Disable host key checking in the boilerplate Ansible code - already done?
+- Add CentOS 5 box

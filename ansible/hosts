@@ -10,4 +10,4 @@ ubuntu1204 ansible_host=10.255.255.12
 [centos]
 centos7 ansible_host=10.255.255.20
 centos6 ansible_host=10.255.255.21
-# centos5 ansible_host=10.255.255.22
+centos5 ansible_host=10.255.255.22
