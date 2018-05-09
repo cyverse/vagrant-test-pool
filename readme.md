@@ -2,12 +2,11 @@ Creates a group of VirtualBox VMs as follows:
 
 | OS               | VM Name    | Private IP Address |
 |------------------|------------|--------------------|
-| Ubuntu 16.04 LTS | ubuntu1604 | 10.255.255.10      |
-| Ubuntu 14.04 LTS | ubuntu1404 | 10.255.255.11      |
-| Ubuntu 12.04 LTS | ubuntu1204 | 10.255.255.12      |
+| Ubuntu 18.04 LTS | ubuntu1804 | 10.255.255.10      |
+| Ubuntu 16.04 LTS | ubuntu1604 | 10.255.255.11      |
+| Ubuntu 14.04 LTS | ubuntu1404 | 10.255.255.12      |
 | CentOS 7         | centos7    | 10.255.255.20      |
 | CentOS 6         | centos6    | 10.255.255.21      |
-| CentOS 5         | centos5    | 10.255.255.22      |
 
 This is intended for use with Ansible (and includes some Ansible boilerplate), but you can use it to test literally anything against the above operating systems.
 
@@ -36,6 +35,10 @@ $ cd ansible
 $ export ANSIBLE_CONFIG=ansible.cfg
 $ ansible all -i hosts -u root -m ping
 
+ubuntu1804 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
 ubuntu1604 | SUCCESS => {
     "changed": false,
     "ping": "pong"
@@ -44,19 +47,11 @@ ubuntu1404 | SUCCESS => {
     "changed": false,
     "ping": "pong"
 }
-ubuntu1204 | SUCCESS => {
-    "changed": false,
-    "ping": "pong"
-}
 centos7 | SUCCESS => {
     "changed": false,
     "ping": "pong"
 }
 centos6 | SUCCESS => {
-    "changed": false,
-    "ping": "pong"
-}
-centos5 | SUCCESS => {
     "changed": false,
     "ping": "pong"
 }
@@ -72,3 +67,5 @@ After destroying and re-provisioning the pool, the VMs will have different host 
 ## Tada
 - Disable host key checking in the boilerplate Ansible code - already done?
 - Add CentOS 5 box
+- Remove CentOS 5, Ubuntu 12.04
+- Add Ubuntu 18.04
